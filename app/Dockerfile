@@ -7,5 +7,6 @@ RUN pip install bjoern
 RUN mkdir -p /opt/app
 
 COPY . /opt/app/
+WORKDIR /opt/app
 
-CMD python api_server.py
+CMD python app_server.py

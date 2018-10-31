@@ -6,6 +6,10 @@ services:
     expose:
       - 5252
     restart: on-failure
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: "localhost:2424"
 
   proxy:
     build: haproxy/
@@ -13,3 +17,9 @@ services:
       - 80:80
     depends_on:
       - app
+  
+  fluent-bit:
+    image: fluent/fluent-bit:latest
+    ports: 
+      - 2424:2424
+      - "2424:2424/udp"
