@@ -1,9 +1,12 @@
+import logging
 from flask import Flask
 
+log = logging.getLogger(__name__)
 app = Flask(__name__)
 
 @app.route('/hello')
 def hello():
+    log.info('Sample log')
     return 'Hello'
 
 
